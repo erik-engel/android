@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignLeft="@+id/imageView"-->
+<!--        android:layout_alignRight="@+id/imageView"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginStart="46dp"-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:layout_marginEnd="45dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="TextView Text Above ImageView"-->
+<!--        android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--        android:textColor="#ff3c33"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="107dp"
+        android:text="CHOOSE IMAGE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="107dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write a msg here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="107dp"
+        android:text="Add text to img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
