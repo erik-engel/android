@@ -5,18 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.textview.R;
+import com.example.textview.model.Note;
 
 import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
-    private List<String> items; // will hold data
+    private List<Note> items; // will hold data
     private LayoutInflater layoutInflater; // can "inflate" layout files
 
-    public MyAdapter(List<String> items, Context context) {
+    public MyAdapter(List<Note> items, Context context) {
         this.items = items;
         layoutInflater = LayoutInflater.from(context);
     }
@@ -46,7 +46,7 @@ public class MyAdapter extends BaseAdapter {
 //        LinearLayout linearLayout = (LinearLayout)convertView;
         TextView textView = convertView.findViewById(R.id.textView1);
         if (textView != null) {
-            textView.setText(items.get(position)); // later I will connect to the items list
+            textView.setText(items.get(position).getText()); // later I will connect to the items list
         }
         return textView;
     }

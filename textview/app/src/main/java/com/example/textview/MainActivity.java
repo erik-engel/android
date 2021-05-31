@@ -1,23 +1,22 @@
 package com.example.textview;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.textview.adapter.MyAdapter;
-import com.example.textview.adapter.repo.Repo;
+import com.example.textview.model.Note;
+import com.example.textview.repo.Repo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Updatable{
 
-    List<String> items = new ArrayList<>(Arrays.asList("How to prepare Salmon", "Remember Joe's Bday", "What to Netflix?"));
+    List<Note> items = new ArrayList<>();
     ListView listView;
     MyAdapter myAdapter;
     Button addButton;
@@ -40,7 +39,12 @@ public class MainActivity extends AppCompatActivity implements Updatable{
 //            items.add("New note " + (items.size() +1));
 //            myAdapter.notifyDataSetChanged(); // tell the listView to reload data
             System.out.println("add button pressed");
-            Repo.r().addNote("new note");
+            String id = Repo.r().addNote("Empty Snap");
+            System.out.println(id);
+            Intent intent = new Intent(listView.getContext(), DetailActivity.class);
+            intent.putExtra("noteid", id);
+
+            startActivity(intent);
         });
     }
 
@@ -49,11 +53,11 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         myAdapter = new MyAdapter(items, this);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            System.out.println(items.get(position));
-            System.out.println(view.getContext().getClass().getName());
-            System.out.println(this.getClass().getName());
+//            System.out.println(items.get(position));
+//            System.out.println(view.getContext().getClass().getName());
+//            System.out.println(this.getClass().getName());
             Intent myIntent = new Intent(view.getContext(), DetailActivity.class);
-            myIntent.putExtra("note", items.get(position));
+            myIntent.putExtra("noteid", items.get(position).getId());
 
             startActivity(myIntent);
 
