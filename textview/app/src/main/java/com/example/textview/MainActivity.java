@@ -53,11 +53,10 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         myAdapter = new MyAdapter(items, this);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener((parent, view, position, id) -> {
-//            System.out.println(items.get(position));
-//            System.out.println(view.getContext().getClass().getName());
-//            System.out.println(this.getClass().getName());
-            Intent myIntent = new Intent(view.getContext(), DetailActivity.class);
+            Intent myIntent = new Intent(view.getContext(), SnapActivity.class);
             myIntent.putExtra("noteid", items.get(position).getId());
+            //Intent myIntent = new Intent(view.getContext(), DetailActivity.class);
+            //myIntent.putExtra("noteid", items.get(position).getId());
 
             startActivity(myIntent);
 

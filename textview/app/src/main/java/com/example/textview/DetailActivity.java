@@ -42,13 +42,13 @@ public class DetailActivity extends AppCompatActivity implements TaskListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailactivity);
         editText = findViewById(R.id.editText1);
-        String noteId = getIntent().getStringExtra("noteid");
-
+        imageView = findViewById(R.id.imageView);
         builder = new AlertDialog.Builder(this);
+        String noteId = getIntent().getStringExtra("noteid");
         currentNote = Repo.r().getNoteWith(noteId);
         editText.setText(currentNote.getText());
-
-        imageView = findViewById(R.id.imageView);
+        //setUpNote();
+        setupStaticImage();
 
         Repo.r().downloadBitmap(noteId, this);
     }
@@ -61,20 +61,18 @@ public class DetailActivity extends AppCompatActivity implements TaskListener {
         Repo.r().updateNoteAndImage(currentNote, currenBitMap);
     }
 
+    private void setUpNote() {
+
+    }
+
     private void setupStaticImage() {
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        storageImageBitmap = drawable.getBitmap();
 //        myst be called AFTER onCreate() has finished. Because otherwise the image
 //        is not there yet
 //        imageView.buildDrawingCache(true);
 //        currentBitmap = Bitmap.createBitmap(imageView.getDrawingCache(true));
     }
-
-
-
-
-    public void chooseImg(View view){
-      //  openDialog();
-    }
-
 
 
     public void openDialog(View view){
@@ -110,6 +108,7 @@ public class DetailActivity extends AppCompatActivity implements TaskListener {
 
 
     }
+
     private void pickImageFromCamera() {
         Intent intentCam = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
