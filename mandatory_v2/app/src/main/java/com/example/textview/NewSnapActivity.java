@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.textview.model.Note;
 import com.example.textview.repo.Repo;
 
-public class DetailActivity extends AppCompatActivity implements TaskListener {
+public class NewSnapActivity extends AppCompatActivity implements TaskListener {
 
     private Bitmap currenBitMap;
     private ImageView imageView;
@@ -40,7 +40,7 @@ public class DetailActivity extends AppCompatActivity implements TaskListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailactivity);
+        setContentView(R.layout.activity_newsnap);
         editText = findViewById(R.id.editText1);
         imageView = findViewById(R.id.imageView);
         builder = new AlertDialog.Builder(this);
