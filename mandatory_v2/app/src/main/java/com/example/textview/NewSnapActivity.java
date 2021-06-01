@@ -41,17 +41,14 @@ public class NewSnapActivity extends AppCompatActivity implements TaskListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsnap);
-        editText = findViewById(R.id.editText1);
         imageView = findViewById(R.id.imageView);
         builder = new AlertDialog.Builder(this);
-        String noteId = getIntent().getStringExtra("noteid");
-        currentNote = Repo.r().getNoteWith(noteId);
-        editText.setText(currentNote.getText());
-        //setUpNote();
-        setupStaticImage();
+        setUpNote();
+        //setupStaticImage();
 
-        Repo.r().downloadBitmap(noteId, this);
+        //Repo.r().downloadBitmap(noteId, this);
     }
+
 
     public void save(View view){
         imageView.buildDrawingCache(true);
@@ -62,7 +59,11 @@ public class NewSnapActivity extends AppCompatActivity implements TaskListener {
     }
 
     private void setUpNote() {
-
+        String noteId = getIntent().getStringExtra("noteid");
+        currentNote = Repo.r().getNoteWith(noteId);
+        System.out.println("test" + currentNote);
+        editText = findViewById(R.id.editText1);
+        editText.setText(currentNote.getText());
     }
 
     private void setupStaticImage() {

@@ -28,8 +28,19 @@ public class MainActivity extends AppCompatActivity implements Updatable{
         setupListView();
         setupAddButton();
         Repo.r().setup(this, items);
-        //Repo.r().prepareRepo("new note");
+    }
 
+    public void setupListView() {
+        listView = findViewById(R.id.listView1);
+        myAdapter = new MyAdapter(items, this);
+        listView.setAdapter(myAdapter);
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent myIntent = new Intent(view.getContext(), SnapActivity.class);
+            myIntent.putExtra("noteid", items.get(position).getId());
+
+            startActivity(myIntent);
+
+        });
     }
 
     public void setupAddButton() {
@@ -45,21 +56,6 @@ public class MainActivity extends AppCompatActivity implements Updatable{
             intent.putExtra("noteid", id);
 
             startActivity(intent);
-        });
-    }
-
-    public void setupListView() {
-        listView = findViewById(R.id.listView1);
-        myAdapter = new MyAdapter(items, this);
-        listView.setAdapter(myAdapter);
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Intent myIntent = new Intent(view.getContext(), SnapActivity.class);
-            myIntent.putExtra("noteid", items.get(position).getId());
-            //Intent myIntent = new Intent(view.getContext(), DetailActivity.class);
-            //myIntent.putExtra("noteid", items.get(position).getId());
-
-            startActivity(myIntent);
-
         });
     }
 
